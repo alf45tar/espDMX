@@ -63,7 +63,7 @@ static void uart_ignore_char(char c);
 dmx_t* dmx_init(int dmx_nr, int ledPin);
 void dmx_uninit(dmx_t* dmx);
 
-void ICACHE_RAM_ATTR dmx_interrupt_handler(dmx_t* dmx) {
+void IRAM_ATTR dmx_interrupt_handler(dmx_t* dmx) {
   if(U0IS & (1 << UIFE)) {    // check status flag
     U0IC = (1 << UIFE);       // clear status flag
     dmxA._tx_empty_irq();     // do interupt
